@@ -32,7 +32,7 @@ angular.module('list')
                 listService.addItem(Simple.create());
             else
                 listService.addItem(Extend.create());
-            listService.filterStatus(false);
+            //listService.filterStatus(false);
         };
     }])
     .component("listItems", {

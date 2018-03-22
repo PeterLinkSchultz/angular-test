@@ -5,37 +5,53 @@ var List = (function () {
     };
     temp.prototype.init = function () {
         this.items = [];
-        this.active = 0;
-        this.green = 0;
-        this.red = 0;
+        this.counters = {
+            active: 0,
+            green: 0,
+            red: 0,
+            all: 0
+        };
     }
     temp.prototype.addItem = function (item) {
         this.items.push(item);
+        this.changeCounters();
     };
     temp.prototype.removeItem = function (id) {
         var index = this.items.findIndex(function (item, index) {
             return (item.id == id);
         });
         this.items.splice(index, 1);
+        this.changeCounters();
     };
     temp.prototype.activeItem = function (id) {
         var item = this.items.find(function (item, index) {
             return (item.id == id);
         });
-        item.changeActive();
-        if ( item.getActive() )       
-            this.active++;
-        else
-            this.active--;
+        var d = function (item) {
+            var _item = item;
+            var info = function () {
+                return _item.getInfo();
+            }
+            return info;
+        };
+        var res = item.changeActive();
+        this.changeCounters();
+    };
+    temp.prototype.getCounters = function() {
+        return this.counters;
+    };
+    temp.prototype.changeCounters = function (res) {
+        this.counters.active = this.filterActive().items.length;
+        this.counters.red = this.filterStatus(false).items.length;
+        this.counters.green = this.filterStatus(true).items.length;
+        this.counters.all = this.getItems().length;
     };
     temp.prototype.statusItem = function (id) {
         var item = this.items.find(function (item, index) {
             return (item.id == id);
         });
-        item.changeStatus();
-        if ( item.getActive() ) {
-
-        } 
+        var res = item.changeStatus();
+        this.changeCounters(res);
     };
     temp.prototype.getItems = function () {
         return this.items;
@@ -46,24 +62,20 @@ var List = (function () {
         }
     };
     temp.prototype.filterActive = function () {
-        var _items = this.filter(function (item) {
+        return this.filter(function (item) {
             return item.getActive();
         });
-        return {
-            items: _items.items,
-            counter: function() { return _items.items.length }
-        }
     };
     temp.prototype.filterStatus = function (type) {
-        this.filter.call(this.filterActive(), function(item) {
-            if ( typeof item.getStatus == 'function' ) {
+        return this.filter.call(this.filterActive(), function (item) {
+            if (typeof item.getStatus == 'function') {
                 return item.getStatus() == type;
             } else {
                 return false;
             }
         });
     };
-    temp.prototype.counter = function() {
+    temp.prototype.counter = function () {
         return this.items.length;
     };
     temp.create = function () {

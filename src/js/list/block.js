@@ -14,7 +14,10 @@ var Simple = (function () {
         }
     };
     temp.prototype.changeActive = function () {
-        this.active = this.active ? false : true;
+        var _active = this.active = this.active ? false : true;
+        return {
+            active: _active
+        }
     };
     temp.prototype.getId = function () {
         return this.id
@@ -45,13 +48,25 @@ var Extend = (function () {
         _proto.init.apply(_this);
     };
     temp.prototype.changeStatus = function () {
-        this.status = this.status ? false : true;
+        var _status = this.status = this.status ? false : true;
+        return {
+            active: this.getActive(),
+            status: _status
+        }
     };
     temp.prototype.getInfo = function () {
         var _this = this;
         var info = _proto.getInfo.apply(_this);
         info.additional = _this.additional;
         return info;
+    };
+    temp.prototype.changeActive = function() {
+        var _this = this;
+        var _active = _proto.changeActive.apply(_this);
+        return {
+            active: _active.active,
+            status: _this.status
+        }
     };
     temp.prototype.getStatus = function () {
         return this.status;

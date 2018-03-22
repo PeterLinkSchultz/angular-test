@@ -46,10 +46,12 @@ angular.module('list')
                     timeout = setTimeout(function () {
                         clicks = 0;
                         listService.activeItem(info.id);
-                    }, 200);
+                        console.log('click');
+                    }, 250);
                 } else {
-                    listService.statusItem(info.id);
+                    console.log('dbclick');
                     clearTimeout(timeout);
+                    listService.statusItem(info.id);
                     clicks = 0;
                 }
             } else {
