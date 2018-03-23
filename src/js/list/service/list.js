@@ -23,21 +23,14 @@ var List = (function () {
         this.items.splice(index, 1);
         this.changeCounters();
     };
-    temp.prototype.activeItem = function (id) {
+    temp.prototype.setActiveItem = function (id) {
         var item = this.items.find(function (item, index) {
             return (item.id == id);
         });
-        var d = function (item) {
-            var _item = item;
-            var info = function () {
-                return _item.getInfo();
-            }
-            return info;
-        };
-        var res = item.changeActive();
+        item.changeActive();
         this.changeCounters();
     };
-    temp.prototype.getCounters = function() {
+    temp.prototype.getCounters = function () {
         return this.counters;
     };
     temp.prototype.changeCounters = function (res) {
@@ -46,7 +39,7 @@ var List = (function () {
         this.counters.green = this.filterStatus(true).items.length;
         this.counters.all = this.getItems().length;
     };
-    temp.prototype.statusItem = function (id) {
+    temp.prototype.setStatusItem = function (id) {
         var item = this.items.find(function (item, index) {
             return (item.id == id);
         });

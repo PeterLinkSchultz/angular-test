@@ -1,4 +1,4 @@
-var angular = require('angular');
+/*var angular = require('angular');
 
 angular.module('list')
     .component('listConfirm', {
@@ -15,4 +15,19 @@ angular.module('list')
                 this.onReject();
             }
         }
-    });
+    });*/
+module.exports = {
+    template: "<div><a href='#' ng-click=\"$ctrl.resolve()\">Yes</a><a href=\"#\" ng-click=\"$ctrl.reject()\">No</a></div>",
+    bindings: {
+        onResolve: "&",
+        onReject: "&"
+    },
+    controller: function () {
+        this.resolve = function () {
+            this.onResolve();
+        }
+        this.reject = function () {
+            this.onReject();
+        }
+    }
+}

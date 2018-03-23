@@ -48,11 +48,7 @@ var Extend = (function () {
         _proto.init.apply(_this);
     };
     temp.prototype.changeStatus = function () {
-        var _status = this.status = this.status ? false : true;
-        return {
-            active: this.getActive(),
-            status: _status
-        }
+        this.status = this.status ? false : true;
     };
     temp.prototype.getInfo = function () {
         var _this = this;
@@ -62,11 +58,7 @@ var Extend = (function () {
     };
     temp.prototype.changeActive = function() {
         var _this = this;
-        var _active = _proto.changeActive.apply(_this);
-        return {
-            active: _active.active,
-            status: _this.status
-        }
+        _proto.changeActive.apply(_this);
     };
     temp.prototype.getStatus = function () {
         return this.status;
