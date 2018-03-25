@@ -18,14 +18,14 @@ var List = (function () {
     };
     temp.prototype.removeItem = function (id) {
         var index = this.items.findIndex(function (item, index) {
-            return (item.id == id);
+            return (item.id === id);
         });
         this.items.splice(index, 1);
         this.changeCounters();
     };
     temp.prototype.setActiveItem = function (id) {
         var item = this.items.find(function (item, index) {
-            return (item.id == id);
+            return (item.id === id);
         });
         item.changeActive();
         this.changeCounters();
@@ -41,7 +41,7 @@ var List = (function () {
     };
     temp.prototype.setStatusItem = function (id) {
         var item = this.items.find(function (item, index) {
-            return (item.id == id);
+            return (item.id === id);
         });
         var res = item.changeStatus();
         this.changeCounters(res);
@@ -61,8 +61,8 @@ var List = (function () {
     };
     temp.prototype.filterStatus = function (type) {
         return this.filter.call(this.filterActive(), function (item) {
-            if (typeof item.getStatus == 'function') {
-                return item.getStatus() == type;
+            if (typeof item.getStatus === 'function') {
+                return item.getStatus() === type;
             } else {
                 return false;
             }

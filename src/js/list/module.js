@@ -19,4 +19,4 @@ angular.module('list', [])
 .factory('listService', ListService)
 .controller('listController',['$scope', 'listService', ListController])
 .controller('countersController',['$scope', 'listService', CountersController])
-.controller('itemController',['$scope', 'listService', ItemController]);
+.controller('itemController',['$scope', '$timeout', 'listService', ItemController]);

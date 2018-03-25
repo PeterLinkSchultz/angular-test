@@ -1,23 +1,7 @@
-/*var angular = require('angular');
-
-angular.module('list')
-    .component('listConfirm', {
-        template: "<div><a href='#' ng-click=\"$ctrl.resolve()\">Yes</a><a href=\"#\" ng-click=\"$ctrl.reject()\">No</a></div>",
-        bindings: {
-            onResolve: "&",
-            onReject: "&"
-        },
-        controller: function () {
-            this.resolve = function () {
-                this.onResolve();
-            }
-            this.reject = function () {
-                this.onReject();
-            }
-        }
-    });*/
 module.exports = {
-    template: "<div><a href='#' ng-click=\"$ctrl.resolve()\">Yes</a><a href=\"#\" ng-click=\"$ctrl.reject()\">No</a></div>",
+    template: "<div class=\"popup-buttons\"><h2>Confirm remove</h2><div class=\"container-flex\">"+
+    "<a class=\"button icon icon-ok\" href='#' ng-click=\"$ctrl.resolve()\"></a>"+
+    "<a class=\"button icon icon-cancel\" href=\"#\" ng-click=\"$ctrl.reject()\"></a></div></div>",
     bindings: {
         onResolve: "&",
         onReject: "&"
@@ -25,9 +9,9 @@ module.exports = {
     controller: function () {
         this.resolve = function () {
             this.onResolve();
-        }
+        };
         this.reject = function () {
             this.onReject();
-        }
+        };
     }
-}
+};

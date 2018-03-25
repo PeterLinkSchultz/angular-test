@@ -1,21 +1,28 @@
-module.exports = function ($scope, listService) {
+module.exports = function ($scope, $timeout, listService) {
     var clicks = 0,
-        timeout;
+        pause = false;
     $scope.changeItem = function (info) {
         if (info.ext) {
             clicks++;
-            if (clicks == 1) {
-                timeout = setTimeout(function () {
-                    clicks = 0;
-                    listService.setActiveItem(info.id);
-                }, 250);
+            if (clicks === 1) {
+                $timeout(function(){
+                }, 200).then(function(){
+                    if ( !pause ) {
+                        listService.setActiveItem(info.id);
+                        clicks = 0;
+                    } else
+                        pause = false;
+                });
             } else {
-                clearTimeout(timeout);
+                pause = true;
                 listService.setStatusItem(info.id);
                 clicks = 0;
             }
         } else {
-            listService.setActiveItem(info.id);
+            $timeout(function(){
+            }, 200).then(function() {
+                listService.setActiveItem(info.id);
+            });
         }
     };
 };

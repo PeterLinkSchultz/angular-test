@@ -1,10 +1,138 @@
-.text {
-  color: #FFF;
+html {
+  height: 100%;
+}
+p {
+  font-family: Arial, Sans-serif;
+}
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+h2 {
+  font: 20px/24px Arial, Sans-serif;
+  text-align: center;
+}
+.container {
+  padding: 15px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: auto;
+  width: 800px;
+  height: 100%;
+  position: relative;
+}
+.container-flex {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-shadow: 0px 0px 3px 2px #fff;
-          box-shadow: 0px 0px 3px 2px #fff;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.column {
+  padding: 15px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 50%;
+  -ms-flex-preferred-size: 300px;
+      flex-basis: 300px;
+}
+.column-list {
+  max-height: 700px;
+  overflow-y: auto;
+}
+.list {
+  overflow-y: auto;
+  width: 100%;
+}
+.item {
+  display: block;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  position: relative;
+}
+.item-cont {
+  padding: 15px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 2px solid #4aa4cc;
+}
+.item-active {
+  -webkit-box-shadow: 0px 0px 3px 2px #5d6053;
+          box-shadow: 0px 0px 3px 2px #5d6053;
+}
+.item-green {
+  border: 2px solid #08a808;
+  background: rgba(8, 168, 8, 0.7);
+}
+.item-red {
+  border: 2px solid #bb0006;
+  background: rgba(187, 0, 6, 0.7);
+}
+.button {
+  border: 2px solid #4aa4cc;
+  display: block;
+  width: 120px;
+  height: 40px;
+  border-radius: 4px;
+  line-height: 40px;
+  text-align: center;
+  text-decoration: none;
+  color: #3e0b1d;
+  cursor: pointer;
+  font-family: Arial, Sans-serif;
+}
+.button-delete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: block;
+}
+.icon {
+  width: 30px;
+  height: 30px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.icon-delete {
+  background-image: url(../img/icon-delete.png);
+}
+.icon-ok {
+  background-image: url(../img/icon-ok.png);
+}
+.icon-cancel {
+  background-image: url(../img/icon-cancel.png);
+}
+.panel {
+  padding: 15px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 2px solid #4aa4cc;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+.popup {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.5);
+}
+.popup-buttons {
+  padding: 15px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: auto;
+  width: 120px;
+  height: auto;
 }
 
 /*# sourceMappingURL=main.css.map*/

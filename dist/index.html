@@ -1,15 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>User Profile</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" media="screen">
-    <!--link rel="stylesheet" href="main.css" media="screen" title="no title"-->
 
-  </head>
-  <body ng-app="app">
-    <list-component></list-component>
+<head>
+  <meta charset="utf-8">
+  <title>User Profile</title>
+  <link rel="stylesheet" href="style/main.css" media="screen" title="no title">
 
-  </body>
-  <script src="bundle.js" charset="utf-8"></script>
+</head>
+
+<body ng-app="app">
+  <div ng-controller="listController" class="container">
+    <div class="container-flex">
+    <div class="column">
+      <div class="panel" ng-controller="countersController">
+        <h2>Info</h2>
+        <list-counters counters="counters"></list-counters>
+      </div>
+        <list-add class="container-flex" on-add="addItem(type)"></list-add>
+    </div>
+    <div class="column column-list">
+      <list-items class="list" items="items" on-remove="removeItem(id, confirm)"></list-items>
+    </div>
+    </div>
+    <list-confirm class="popup" ng-if="confirm" on-resolve="resolve()" on-reject="reject()"></list-confirm>
+  </div>
+</body>
+<script src="bundle.js" charset="utf-8"></script>
+
 </html>

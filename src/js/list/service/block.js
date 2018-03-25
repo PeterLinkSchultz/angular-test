@@ -3,21 +3,18 @@ var Simple = (function () {
     temp.prototype = {};
     temp.prototype.id = 1;
     temp.prototype.init = function () {
-        this.active = true;
+        this.active = false;
         this.id = temp.prototype.id++;
-        this.content = "DDDDDDDDDDDDD";
+        this.content = randAa(getRandomInt(1, 100));
     };
     temp.prototype.getInfo = function () {
         return {
-            conent: this.content,
+            content: this.content,
             active: this.active
         }
     };
     temp.prototype.changeActive = function () {
-        var _active = this.active = this.active ? false : true;
-        return {
-            active: _active
-        }
+        this.active = this.active ? false : true;
     };
     temp.prototype.getId = function () {
         return this.id
@@ -74,4 +71,24 @@ var Extend = (function () {
 module.exports = {
     Simple,
     Extend
+};
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+function randAa(n) {
+    var s ='',
+        space = getRandomInt(1, 10),
+        c = 0;
+    while(s.length < n) {
+        if ( c < space )
+            c++;
+        else {
+            s += " ";
+            c = 0;
+            space = getRandomInt(1, 10);
+        }
+        s += String.fromCharCode(Math.random() * 127).replace(/\W|\d|_/g, '');
+    }
+    return s;
 }
